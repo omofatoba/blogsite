@@ -1,5 +1,5 @@
 <?php
-$error=['email'=>'','password'=>'','gen'=>''];
+$error=['email'=>'','password'=>'','gen'=>'',"ind"=>0];
 
 
 $email='';
@@ -29,7 +29,7 @@ if (empty($_POST['pass'])) {
  }
  
 
-$select="SELECT name,email,pic  FROM user WHERE email='$email' AND password='$password'";
+$select="SELECT id,name,email,pic  FROM user WHERE email='$email' AND password='$password'";
 
 $query=mysqli_query($connect,$select);
 
@@ -39,15 +39,17 @@ $row=mysqli_num_rows($query);
 
 if ($row === 0) {
     $error['gen']="Credentials Not Found";
+    $error['ind']=0;
 }else{
     $data=mysqli_fetch_assoc($query);
 
     $_SESSION['user']=$data;
+    $error['ind']=1;
+   // header('location:admin/dashboard.php');
 
-    header('location:admin/dashboard.php');
 }
 
-echo $row;
+
 }
 
 }

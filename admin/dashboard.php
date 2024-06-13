@@ -1,5 +1,6 @@
 <?php
 require_once('../config.php');
+require_once("../action/need.php");
 
 if (isset($_SESSION['user'])) {
  
@@ -9,14 +10,9 @@ if (isset($_SESSION['user'])) {
 
 
 var_dump($_SESSION['user']);
+require_once("head.php");
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="../styles/copied.css">
+
 </head>
 <body>
 
@@ -38,7 +34,7 @@ var_dump($_SESSION['user']);
 
       <div class="summary-box">
         <h3>Posts</h3>
-        <p>0</p>
+        <p><?php echo $row?></p>
       </div>
 
     

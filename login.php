@@ -4,9 +4,12 @@ require_once("config.php");
 
 require_once("action/authenticate.php");
 
-if (isset($_SESSION['user'])) {
-    header('location:admin/dashboard.php');
-}
+ if (isset($_SESSION['user'])) {
+
+   
+} 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -42,5 +45,29 @@ if (isset($_SESSION['user'])) {
 
 </div>
 
+
+<script>
+
+ 
+
+let sec=`<?php if (isset($_SESSION['user'])) {
+   var_dump($_SESSION['user']);
+}else{
+echo "Nothing";
+}?>`;
+console.log(sec);
+
+if (sec=="Nothing") {
+    
+}else{
+    let indicator="<?php echo $error['ind']; ?>"
+//console.log(indicator)
+
+    let url=localStorage.getItem("url");
+    window.location.replace(url)
+
+}
+
+</script>
 </body>
 </html>

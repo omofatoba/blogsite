@@ -13,7 +13,7 @@
   <a class="non" href="{{route('Addbook')}}">AddBooks</a>
   <a class="non" href="{{route('AdminBooks')}}">Books</a>
   <a class="non" href="postCreate.php">Create Posts</a>
-  <a class="non" href="{{route('AdminBooks')}}">Posts</a>
+  <a class="non" href="post.php">Posts</a>
 
   <a class="non" href="#">Orders</a>
   <a class="non" href="#">Customers</a>
