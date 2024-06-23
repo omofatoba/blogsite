@@ -79,14 +79,18 @@ if ($_SESSION['user']['status']=="Admin") {
 
 <p class="gth btn btn-primary">Change Password</p>
 
+<p class="text-danger"><?php echo $error['gen'] ?></p>
+
 <div class="fh" style="display: none;">
 <input type="password" class="form-control w-50 mt-4" name="oldPass" id="" placeholder="ENTER OLD PASSWORD">
 
 <input type="password" class="form-control w-50 mt-4" name="newPass" id="" placeholder="ENTER NEW PASSWORD">
 
 <input type="password" class="form-control w-50 mt-4" name="Cpass" id="" placeholder="CONFIRM PASSWORD">
+<p class="text-danger"><?php echo $error['password'] ?></p>
 
 <input type="submit" class="btn btn-primary mt-2" name="passwordSave" value="Save Password" >
+
 </div>
 <p class="text-danger"></p>
 

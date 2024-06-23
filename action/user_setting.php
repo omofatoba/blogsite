@@ -70,6 +70,45 @@ if (isset($_FILES['image'])) {
 email();
 
 
+function password() {
+    global $connect, $error;
+    if (isset($_POST['passwordSave'])) {
+
+
+     $email=$_SESSION['user']['email'];
+     $old=md5($_POST['oldPass']);
+
+     $new=$_POST['newPass'];
+     $c_pass=$_POST['Cpass'];
+
+
+$select="SELECT id  FROM user WHERE email='$email' AND password='$old'";
+
+$query=mysqli_query($connect,$select);
+
+$row=mysqli_num_rows($query);
+
+if ($row !== 0) {
+ if (strlen($new) <8) {
+    $error['password']="PASSWORD MUST BE 8 CHARACTERS LONG";
+ }else{
+    if ($new=== $c_pass) {
+        $rt=md5($new);
+        $update="UPDATE user SET password='$rt' WHERE email ='$email' ";
+        $query=mysqli_query($connect,$update);
+    }else{
+        $error['gen']="PASSWORD DO NOT MATCH";   
+    }
+ }
+}else{
+$error['gen']="Wrong password";
+}
+
+    }
+}
+
+password();
+
 function strip($val)  {
 
     return htmlentities(strip_tags($val));

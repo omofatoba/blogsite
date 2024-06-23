@@ -46,6 +46,8 @@ require_once("action/authenticate.php");
 
     <button type="submit" name="register" class="btn btn-primary mt-4 w-50">Submit</button>
 
+    <a href="action/google.php"  class="btn btn-light text-danger mt-4 w-50">Google</a>
+
     <p class="mt">Have An Account? <a href="login.php">Login</a></p>
 </form>
 
