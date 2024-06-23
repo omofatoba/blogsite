@@ -575,3 +575,8 @@ position: absolute;
 .reason, .date {
   color: #555;
 }
+
+.mlt{
+  width: 40%;
+  height: 30vh;
+}

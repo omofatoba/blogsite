@@ -19,7 +19,11 @@ $query=mysqli_query($connect,$delete);
 
 
 if ($query) {
-  header("location:../admin/dashboard.php");
-   unlink("../uploads/".$image);
+  if ($_SESSION['user']['status']=="Admin") {
+    header("location:../admin/post.php");
+   }else{
+    header("location:../user/dashboard.php");
+   }
+ 
    }
 ?>

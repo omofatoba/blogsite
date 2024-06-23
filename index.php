@@ -2,62 +2,7 @@
 require_once("config.php");
 
 require_once("action/need.php");
-
-$hv=h_view();
-$old=old_post();
-$short = [
-"01"=>  'Jan', 
- "02"=> 'Feb', 
- "03"=> 'Mar', 
-"04"=>  'Apr', 
- "05"=> 'May', 
- "06"=> 'Jun', 
- "07"=> 'Jul', 
- "08"=> 'Aug', 
- "09"=> 'Sep', 
- "10"=> 'Oct', 
- "11"=> 'Nov', 
- "12"=> 'Dec'
-];
-function dat_maker($dat) {
-    global $short;
-$newRpl=explode(" ",$dat);   
-
-$epl=explode("-",$newRpl[0]);    
-
-$month=$short[$epl[1]];
-
-$full=$epl[2]." ".$month ." ,".$epl[0];
-echo $full;
-}
-
-function time_set($dat) {
-   
-    $newRpl=explode(" ",$dat);   
-
-
-    $time=$newRpl[1];
-    $epl=explode(":",$time);  
-
-    $current=explode(':',date('G:i:s'));
-  
-   //hour echo $current[0]-$epl[0];
-
-   //seconds
-   $sec=$current[2]-$epl[2];
-
-   echo $sec;  
-
-}
-//var_dump($short);
-
-function auh($id,$tem) {
-    global $connect;
-    $select ="SELECT * FROM user WHERE id='$id'" ;
-    $query=mysqli_query($connect,$select);
-    $result=mysqli_fetch_assoc($query);
-   echo $result[$tem];
-}
+require_once("action/etc.php");
 
 
 
@@ -65,6 +10,8 @@ function auh($id,$tem) {
 $brek=brk();
 
 $rps=rp();
+
+
 
 ?>
 <!DOCTYPE html>
@@ -78,53 +25,14 @@ $rps=rp();
     <script src="script/index.js" defer></script>
     <script src="script/mis.js" defer></script>
 </head>
-<body>
-    <div class="tip">
-        <div class="pl">
-           <a href=""> <i class="fa-brands fa-facebook-f"></i></a>
-           <a href=""> <i class="fa-brands fa-x-twitter"></i></a>
-           <a href=""> <i class="fa-brands fa-square-instagram"></i></a>
-        </div>
 
-        <div class="pr">
-            <p><a href="tel:+2349017251972">+2349017251972</a></p>
-            <p><a href="mailto:okoloemeka37@gmail.com">support@gmail.com</a></p>
-        </div>
-    </div>
-
-    <div class="conty">
-        <div class="navb">
-            <p><a href="">Home</a></p>
-            <p><a href="">ARCHIVE</a></p>
-            <p><a href="">Category</a></p>
-         <div class="hj">
-            <p class="">post type <span><i class="fa-solid fa-angle-down"></i></span></p>
-            <div class="thy">
-                <p class="a">Audio Post</p>
-                <p class="a">Audio Post</p>
-                <p class="a">Audio Post</p>
-                <p class="a">Audio Post</p>
-                <p class="a">Audio Post</p>
-            </div>
-        </div>   
-            <p><a href="">about</a></p>
-            <p><a href="">contact</a></p>
-
-            <div class="dfl">
-                <input type="text"  id="search">
-            </div>
-        </div>
-
-        <div class="space"></div>
-      
+<?php require_once('needs/navbar.php');?>
+        
      <div class="top_p">
-     <?php foreach ($old as $data) {?>
+      <?php foreach ($old as $data) {?>
 
     
-   
-
-  
-                <div class="t1" style="background-image: url(image/top.webp);">
+         <div class="t1" style="background-image: url(image/top.webp);">
                     <div class="tw">
                         <div class="al">
                         <p class="tag"><?php echo $data['tag'] ?></p>
@@ -200,11 +108,7 @@ $rps=rp();
         <img src="uploads/<?php auh($data['author'],"pic") ?>" alt="user__image" class="user__image">
         <div class="user__info">
           <h5><?php auh($data['author'],'name') ?></h5>
-          <small>2h ago</small>
-
-
-          <?php time_set($data['created_at']); ?>
-
+          <small><?php time_set($data['created_at']); ?></small>
           
         </div>
       </div>

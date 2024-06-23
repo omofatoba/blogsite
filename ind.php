@@ -1,6 +1,7 @@
 <?php
 require_once('config.php');
 require_once("action/need.php");
+require_once("action/etc.php");
 
 $id=$_REQUEST['id'];
 
@@ -36,52 +37,40 @@ mysqli_query($connect,$up);
     <title>Document</title>
     <link rel="stylesheet" href="styles/ind.css">
     <script src="script/comment.js" defer></script>
+    <script src="script/mis.js" defer></script>
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="https://kit.fontawesome.com/d335dcf51b.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <style>
-  a{
-    color: inherit;
-    text-decoration: none;
+
+  .mot{
+    color: black;
+    margin-bottom: 20px;
   }
 </style>
 
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-12">
-      <article class="blog-card">
-        <div class="blog-card__background">
-          <div class="card__background--wrapper">
-            <div class="card__background--main" style="background-image: url('uploads/<?php echo $post['image'] ?>');">
-              <div class="card__background--layer"></div>
-            </div>
-          </div>
-        </div>
-        <div class="blog-card__head">
-          <span class="date__box">
-            <span class="date__day">11</span>
-            <span class="date__month">JAN</span>
-          </span>
-        </div>
+<?php require_once('needs/navbar.php');?>
+
+<div class="reg">
+            
+<div class="ig" style="background-image:url('image/12345.jpg');"></div>
         <div class="blog-card__info">
-          <h5><?php echo $post['title'] ?></h5>
+
+        <div class="mot">
+                                        <p class="er"><i class="fa-solid fa-user"></i> <span><?php auh($post['author'],'name') ?></span></p>
+                                        <p class="er"><i class="fa-solid fa-calendar-days"></i> <span><?php dat_maker($post['created_at']) ?></span></p>
+                                        <p class="er"><i class="fa-solid fa-comment"></i> <span><?php echo $post['num_comment'] ?>comments</span></p>
+                                    </div>
+          <h5 class="post-title"><?php echo $post['title'] ?></h5>
           <p>
             <a href="#" class="icon-link mr-3"><i class="fa fa-pencil-square-o"></i><?php echo $author['name']?></a>
             <a href="#" class="icon-link"><i class="fa fa-comments-o"></i> 150</a>
           </p>
             <p><?php echo $post['content'] ?></p>       
         </div>
-      </article>
-    </div>
-  </div>
-</div>
 
-<section class="detail-page">
-  <div class="container mt-5">
-    
-  </div>
-
-
+        </div>
 
 
   

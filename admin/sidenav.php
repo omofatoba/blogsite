@@ -2,7 +2,7 @@
 
   <div class="admin-info">
   
-      <img src="<?php echo "../image/".$_SESSION['user']['pic']?>" alt="Admin Avatar">
+      <img src="<?php echo "../uploads/".$_SESSION['user']['pic']?>" alt="Admin Avatar">
       <span>Welcome, <?php echo $_SESSION['user']['name'] ?></span>
   </div>
 
@@ -18,7 +18,8 @@
   <a class="non" href="#">Orders</a>
   <a class="non" href="#">Customers</a>
   <a class="non" href="{{route('report_show')}}">Reports</a>
-  <a class="non" href="{{route('setting')}}">Settings</a>
+
+  <a class="non" href="settings.php">Settings</a>
   
 
  

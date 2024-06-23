@@ -4,9 +4,13 @@ require_once("../action/need.php");
 
 if (isset($_SESSION['user'])) {
  
+  if ($_SESSION['user']['status']=="user") {
+    header("location:../user/dashboard.php");
+  }
 }else{
     header("location:../login.php");
 }
+
 
 
 var_dump($_SESSION['user']);

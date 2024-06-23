@@ -45,7 +45,7 @@ require_once("head.php");
 
           <input type="file" name="image" accept="jpg,png,jpeg" id="image" style="visibility: hidden;">
 
-          <img src="" class="view" alt="">
+          <img src="" class="view mlt" alt="">
          </div>
 
        

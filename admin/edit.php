@@ -20,11 +20,13 @@ $posts=specPost($id);
 
 <body>
     
-<header>
-<h2>Edit Post <?php echo $posts['title']?></h2>
-   
-  </header>
-<?php require_once("sidenav.php") ?>
+
+
+<?php 
+
+//require_once("sidenav.php");
+
+?>
     <div class="wrapper">
         <div class="title">
           Post Creation Form
@@ -52,6 +54,21 @@ $posts=specPost($id);
          </div>  
 
          <input type="hidden" name="id" value="<?php echo $posts['id'] ?>">
+
+
+
+         <div class="inputfield">
+          <p class="err"><?php echo $error['image'] ?></p>
+
+          <span class="fakebtn btn" style="background-color: paleturquoise;" >Upload Picture</span>
+
+          <input type="file" name="image" accept="jpg,png,jpeg" id="image" style="visibility: hidden;">
+
+          <input type="hidden" name="oldImage" value="<?php echo $posts['image'] ?>">
+
+          <img src="../uploads/<?php echo $posts['image'] ?>" class="view mlt" alt="">
+         </div>
+
        
         
           <div class="inputfield">
@@ -60,6 +77,28 @@ $posts=specPost($id);
         </div>
     </form>
     </div>
+
+    <script>
+
+document.querySelector(".fakebtn").addEventListener('click',()=>{
+  document.querySelector("#image").click();
+})
+
+      let image=document.querySelector("#image");
+      image.addEventListener("change",function(e) {
+      if (this.files && this.files[0]) {
+        const reader=new FileReader();
+
+        reader.onload=function(event) {
+          document.querySelector(".view").src=event.target.result;
+        };
+
+        reader.readAsDataURL(this.files[0])
+      }
+      });
+
+    </script>
+
 
 </body>
 </html>

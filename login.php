@@ -9,7 +9,6 @@ require_once("action/authenticate.php");
    
 } 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +40,8 @@ require_once("action/authenticate.php");
 <p class="text-danger"><?php echo $error['password'] ?></p>
 
     <button type="submit" name="login" class="btn btn-primary mt-4 w-50">Submit</button>
+
+    <p class="mt">Don't Have An Account? <a href="register.php">Register</a></p>
 </form>
 
 </div>
@@ -61,9 +62,10 @@ if (sec=="Nothing") {
     
 }else{
     let indicator="<?php echo $error['ind']; ?>"
-//console.log(indicator)
+
 
     let url=localStorage.getItem("url");
+    console.log(url)
     window.location.replace(url)
 
 }
